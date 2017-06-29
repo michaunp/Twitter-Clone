@@ -24,8 +24,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     //pass in the tweets array into the constructor
     public TweetAdapter(List<Tweet> tweets) {
         mTweets = tweets;
-
-
     }
     //for each row inflate layout and pass into ViewHolder class
 
@@ -36,6 +34,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
         View tweetview = inflater.inflate(R.layout.item_tweet, parent, false);
         ViewHolder viewHolder = new ViewHolder(tweetview);
+
+
         return viewHolder;
     }
 
@@ -47,6 +47,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
         //populate the views according to this data
         holder.tvUsername.setText(tweet.user.name);
+        holder.tvScreenname.setText("@" + tweet.user.screenName);
         holder.tvBody.setText(tweet.body);
         holder.tvTimestamp.setText(TimeFormatter.getTimeDifference(tweet.createdAt));
         Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
@@ -66,6 +67,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         public TextView tvUsername;
         public TextView tvBody;
         public TextView tvTimestamp;
+        public TextView tvScreenname;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -75,6 +77,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             tvUsername = (TextView) itemView.findViewById(R.id.tvUsername);
             tvBody = (TextView) itemView.findViewById(R.id.tvBody);
             tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
+            tvScreenname = (TextView) itemView.findViewById(R.id.tvScreenname);
         }
     }
 }

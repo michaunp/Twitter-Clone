@@ -4,4 +4,7 @@
     <color name="dark_blue">#0084b4</color>
     <color name="background_blue">#c0deed</color>
     <color name="verified_blue">#1dcaff</color>
+    <color name="favorited">#af1f59</color>
+    <color name="black">#000</color>
+
 </resources>

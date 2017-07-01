@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +30,7 @@ public class TimelineActivity extends AppCompatActivity {
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
+    SwipeRefreshLayout tweet_refresh;
     private final int REQUEST_CODE = 20;
 
     @Override
@@ -41,10 +43,12 @@ public class TimelineActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //sets toolbar to act as the actionbar
         setSupportActionBar(toolbar);
-        //sets up toolobar title
+        //sets up toolbar title
         getSupportActionBar().setTitle("Home");
         //find RecylerView
         rvTweets = (RecyclerView) findViewById(R.id.rvTweet);
+        //init the swipe refresh layout
+        tweet_refresh = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         //init arraylist (data source)
         tweets = new ArrayList<>();
         //construct adapter from data source
@@ -53,10 +57,22 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
         //set the adapter
         rvTweets.setAdapter(tweetAdapter);
+        //set up lines to seperate tweets
         DividerItemDecoration mDividerItemDecoration;
         mDividerItemDecoration = new DividerItemDecoration(rvTweets.getContext(), Configuration.ORIENTATION_PORTRAIT);
         rvTweets.addItemDecoration(mDividerItemDecoration);
+        //get new tweets
         populateTimeline();
+
+        tweet_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                tweet_refresh.setRefreshing(true);
+                tweetAdapter.clear();
+                populateTimeline();
+                tweet_refresh.setRefreshing(false);
+            }
+        });
     }
 
     @Override
@@ -84,10 +100,6 @@ public class TimelineActivity extends AppCompatActivity {
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
-
-
-
-
     }
 
 

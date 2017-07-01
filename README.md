@@ -52,7 +52,7 @@ The following **additional** features are implemented:
 
 
 Here's a walkthrough of implemented user stories:
-[!Walkthrough](twitter_demo.gif)
+![Walkthrough](twitter_demo.gif)
 
 ## Notes
 

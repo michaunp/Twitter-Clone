@@ -94,8 +94,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/tvBody"
-        android:layout_below="@+id/tvBody"
         android:layout_toEndOf="@+id/tvUsername"
-        android:background="@drawable/ic_vector_home_stroke" />
+        android:background="@drawable/ic_bold_reply"
+        android:layout_below="@+id/tvBody" />
 
 </RelativeLayout>

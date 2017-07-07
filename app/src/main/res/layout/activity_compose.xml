@@ -21,20 +21,34 @@
     <EditText
         android:id="@+id/et_newtweet"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="255dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tbnew_tweet"></EditText>
+        android:layout_below="@+id/tbnew_tweet"
+        android:textColorHint="#AAB8C2"
+        android:gravity="top|left"></EditText>
 
     <Button
         android:id="@+id/bt_tweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/et_newtweet"
         android:layout_alignParentEnd="true"
-        android:background="#00aced"
+        android:layout_below="@+id/et_newtweet"
+        android:background="@color/logo_blue"
         android:onClick="postTweet"
         android:text="Tweet"
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvTextCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bt_tweet"
+        android:layout_alignBottom="@+id/bt_tweet"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@+id/bt_tweet"
+        android:text="140"
+        android:textSize="18sp"
+        tools:text="140" />
 </RelativeLayout>

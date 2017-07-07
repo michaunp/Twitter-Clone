@@ -2,10 +2,9 @@ package com.codepath.apps.restclienttemplate.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
 
 
 public class Tweet implements Parcelable {

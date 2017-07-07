@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -74,6 +75,24 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         holder.count_retweet.setText(String.valueOf(tweet.retweet_count));
         holder.count_favorite.setText(String.valueOf(tweet.favorite_count));
         Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
+        holder.ivReply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ComposeActivity.class);
+                i.putExtra("reply_id", tweet.uid);
+                i.putExtra("screen_name", tweet.user.screenName);
+                context.startActivity(i);
+            }
+        });
+        holder.ivProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ProfileActivity.class);
+                i.putExtra("screen_name", tweet.user.screenName);
+                i.putExtra("user_id", tweet.user.uid);
+                context.startActivity(i);
+            }
+        });
         holder.ivFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,6 +204,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView ivProfileImage;
+        public ImageView ivReply;
         public TextView tvUsername;
         public TextView tvBody;
         public TextView tvTimestamp;
@@ -206,6 +226,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             count_retweet = (TextView) itemView.findViewById(R.id.count_retweet);
             ivFavorite = (ImageView) itemView.findViewById(R.id.ivFavorite);
             count_favorite = (TextView) itemView.findViewById(R.id.count_favorite);
+            ivReply = (ImageView) itemView.findViewById(R.id.ivReply);
             context = itemView.getContext();
 
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="logo_blue">#00aced</color>
+    <color name="faded_logo_blue">#B7E3FC</color>
     <color name="dark_blue">#0084b4</color>
     <color name="background_blue">#c0deed</color>
     <color name="verified_blue">#1dcaff</color>
     <color name="favorited">#af1f59</color>
-    <color name="black">#000</color>
+    <color name="black">#000000</color>
 
 </resources>
